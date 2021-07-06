@@ -34,6 +34,7 @@
 
             <div class="form-wrapper">
               <label for="password_confirmation">Confirme sua senha</label>
+              <input type="password" name="password_confirmation" id="password_confirmation" v-model="password_confirmation" placeholder="Re-enter password" class="form-control" required>
             </div>
             <button type="submit" class="mt-3">
               Cadastre-se &nbsp;&nbsp;<span
@@ -49,62 +50,62 @@
 </template>
 
 <script>
-import { CometChat } from "@cometchat-pro/chat";
+    import { CometChat } from "@cometchat-pro/chat";
 
-    export default {
-        data() {
-            return {
-                username: "",
-                password: '',
-                password_confirmation: '',
-                showSpinner: false,
+        export default {
+            data() {
+                return {
+                    username: "",
+                    password: '',
+                    password_confirmation: '',
+                    showSpinner: false,
 
-            };
-        },
+                };
+            },
 
-        methods: {
-            registerAppUser() {
-                if (this.username && this.password && this.password_confirmation) {
-                    this.showSpinner = true;
+            methods: {
+                registerAppUser() {
+                    if (this.username && this.password && this.password_confirmation) {
+                        this.showSpinner = true;
 
-                    if (this.password && this.password_confirmation) {
+                        if (this.password && this.password_confirmation) {
 
-                        let data = {
-                            username: this.username,
-                            password: this.password,
-                            password_confirmation: this.password_confirmation
-                        };
+                            let data = {
+                                username: this.username,
+                                password: this.password,
+                                password_confirmation: this.password_confirmation
+                            };
 
-                        axios.post(`http://127.0.0.1:8000/register`, data).then(response => {
-                            console.log(response).this.createUserOnCometChat(this.username);
+                            axios.post(`http://127.0.0.1:8000/register`, data).then(response => {
+                                console.log(response).this.createUserOnCometChat(this.username);
 
-                            this.showSpinner = false;
-                        }).catch(error => {
-                            console.log(error.response.data.message);
-                            this.showSpinner = false;
-                        })
+                                this.showSpinner = false;
+                            }).catch(error => {
+                                console.log(error.response.data.message);
+                                this.showSpinner = false;
+                            })
+                        }
                     }
+                },
+
+                redirect() {
+                    window.location.href = '/login';
+                },
+
+                async createUserOnCometChat() {
+                    const AUTH_KEY = "AUTH_KEY";
+                    const UID = this.username
+
+                    var user= new CometChat.User(UID);
+
+                    user.setName(this.username)
+                    CometChat.createUser(user, AUTH_KEY).then(
+                        user => {
+                            console.log("usuario criado", user);
+                            this.redirect()
+                        })
                 }
-            },
-
-            redirect() {
-                window.location.href = '/login';
-            },
-
-            async createUserOnCometChat() {
-                const AUTH_KEY = "AUTH_KEY";
-                const UID = this. this.username
-
-                var user= new CometChat.User(UID);
-
-                user.setName(this.username)
-                  CometChat.createUser(user, AUTH_KEY).then(
-                      user => {
-                          console.log("usuario criado", user);
-                          this.redirect()
-                      })
             }
-        }
 
-    };
+        };
 </script>

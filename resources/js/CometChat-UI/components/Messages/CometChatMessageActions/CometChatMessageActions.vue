@@ -67,14 +67,6 @@ import reactIcon from "./resources/add-reaction-message.svg";
 import replyIcon from "./resources/startThread.png";
 import editIcon from "./resources/edit-message.png";
 
- // from
-edit.png
-// TO
-edit-message.png
-// from
-add-reaction.svg
-//to
-add-reaction-message.svg
 
 import * as style from "./style";
 

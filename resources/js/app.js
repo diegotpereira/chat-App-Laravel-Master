@@ -35,7 +35,7 @@ Vue.component('chat-component', require('./views/Chat.vue').default);
 var appID = "APP_ID";
 var region = "REGION";
 var appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build();
-CometChat.init(appId, appSetting).then(
+CometChat.init(appID, appSetting).then(
     () => {
         console.log("Inicializado com sucesso!");
 

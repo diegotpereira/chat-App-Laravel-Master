@@ -10003,7 +10003,7 @@ h3 {
     border-color: #dee2e6;
   }
 }
-.cc1-chat-win-impt-ext-wrap {
+.cc1-chat-win-inpt-ext-wrap {
   bottom: 55px !important;
 }
 
@@ -10015,6 +10015,7 @@ body {
   font-size: 1.4rem !important;
 }
 
-input, nav {
+input,
+nav {
   font-size: 1.4rem !important;
 }

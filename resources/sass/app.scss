@@ -5,11 +5,13 @@
 @import 'variables';
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+//@import '~bootstrap/scss/bootstrap';
+@import "node_modules/bootstrap/scss/bootstrap";
+
 
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-.cc1-chat-win-impt-ext-wrap {
+.cc1-chat-win-inpt-ext-wrap {
     bottom: 55px !important;
 }
 
@@ -21,6 +23,7 @@ body {
     font-size: 1.4rem !important;
 }
 
-input, nav {
+input,
+nav {
     font-size: 1.4rem !important;
 }

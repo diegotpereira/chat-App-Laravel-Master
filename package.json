@@ -29,6 +29,8 @@
         "dateformat": "^4.5.1",
         "emoji-mart-vue-fast": "^10.0.1",
         "file-loader": "^6.2.0",
+        "twemoji": "^13.1.0",
+        "vue-twemoji-picker": "^0.2.1",
         "webpack": "^5.42.1"
     }
 }

@@ -18,16 +18,16 @@ mix.js('resources/js/app.js', 'public/js')
     });
 
     mix.webpackConfig({
-module: {
-    rules: [
-      {
-        test: /\.wav$/i,
-        use: [
-          {
-            loader: 'file-loader',
-          },
+    module: {
+        rules: [
+        {
+            test: /\.wav$/i,
+            use: [
+            {
+                loader: 'file-loader',
+            },
+            ],
+        },
         ],
-      },
-    ],
-  },
+    },
 })

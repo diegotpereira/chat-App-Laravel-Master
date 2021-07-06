@@ -23,7 +23,7 @@ export default {
 
             try {
                 await CometChat.logout();
-                window.location = '/login';
+                window.location.href = '/login';
             } catch (error) {
                 console.error(error);
 
