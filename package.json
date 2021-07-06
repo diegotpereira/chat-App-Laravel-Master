@@ -21,10 +21,14 @@
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1",
         "vue": "^2.6.12",
+        "vue-loader": "^15.9.7",
         "vue-template-compiler": "^2.6.12"
     },
     "dependencies": {
         "@cometchat-pro/chat": "^2.4.0",
-        "file-loader": "^6.2.0"
+        "dateformat": "^4.5.1",
+        "emoji-mart-vue-fast": "^10.0.1",
+        "file-loader": "^6.2.0",
+        "webpack": "^5.42.1"
     }
 }

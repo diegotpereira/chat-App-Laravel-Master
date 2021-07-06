@@ -6,8 +6,8 @@
 
 require('./bootstrap');
 
-import { CometChat } from "@cometchat-pro/chat";
-import Vue from "vue";
+import { CometChat } from "@cometchat-pro/chat"
+
 
 window.Vue = require('vue').default;
 
@@ -22,9 +22,9 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('login-component', require('./views/Login.vue').default);
-Vue.component('register-component', require('/views/Register.vue').default);
+Vue.component('register-component', require('./views/Register.vue').default);
 Vue.component('chat-component', require('./views/Chat.vue').default);
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -32,9 +32,9 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var appId = "APP_ID";
+var appID = "APP_ID";
 var region = "REGION";
-var appSetting = newCometChat.appSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build();
+var appSetting = new CometChat.AppSettingsBuilder().subscribePresenceForAllUsers().setRegion(region).build();
 CometChat.init(appId, appSetting).then(
     () => {
         console.log("Inicializado com sucesso!");

@@ -6,3 +6,21 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+.cc1-chat-win-impt-ext-wrap {
+    bottom: 55px !important;
+}
+
+.cc1-chat-win-conver-wrap {
+    bottom: 55px !important;
+}
+
+body {
+    font-size: 1.4rem !important;
+}
+
+input, nav {
+    font-size: 1.4rem !important;
+}
