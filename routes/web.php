@@ -20,11 +20,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::post('/update/token', 'Auth\RegisterController@updateToken')->name('updateToken');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-header('Access-Control-Allow-Origin:  *');
-header('Access-Control-Allow-Methods:  POST, GET, OPTIONS, PUT, DELETE');
-header('Access-Control-Allow-Headers:  Content-Type, X-Auth-Token, Origin, Authorization');
+
+
+Route::middleware('cors')->group(function () {
+    //your_routes
+    Route::post('/update/token', 'Auth\RegisterController@updateToken')->name('updateToken');
+
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+});
