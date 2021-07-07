@@ -25,23 +25,21 @@
 <script>
     import { CometChat } from "@cometchat-pro/chat";
     export default {
-        data(){
+        data() {
             return {
                 username: "",
-                password:'',
+                password: '',
                 showSpinner: false,
                 token: '',
             };
         },
-
         methods: {
-            authLoginAppUser(){
+            authLoginAppUser() {
                 let userData = {
                     username: this.username,
                     password: this.password
                 };
                 this.showSpinner = true;
-
                 if (this.username && this.password) {
                     axios.post(`http://127.0.0.1:8000/login`, userData).then(response => {
                         this.logUserInToCometChat(this.username);
@@ -50,26 +48,25 @@
                         console.log(error.response.data.message);
                         this.showSpinner = false;
                     })
-
                 } else {
-                    console.log('Por favor verifique suas credenciais');
+                    console.log('Please check your credentials');
                 }
             },
-            logUserInToCometChat(){
-                var AUTH_KEY = "AUTH_KEY"
-                CometChat.login(this.username,AUTH_KEY).then(
-                    data => {
-                        console.log(data)
-                        window.location.href = '/home';
-                    },
-
-                    error => {
-                        this.showSpinner = false;
-                        alert("Ups. Algo deu errado. Isso geralmente acontece quando você insere um nome de usuário que não existe. Verifique o console para obter mais informações");
-                        console.log("Erro no Login:", error.code);
-                    }
-                );
-            }
+            logUserInToCometChat(UID) {
+                    const AUTH_KEY = "3ed7b100332e48b633c492de743e3a8802f77934"
+                    CometChat.login(UID,AUTH_KEY).then(
+                                data => {
+                                    console.log(data)
+                            window.location.href = '/home';
+                                },
+                                error => {
+                                    this.showSpinner = false;
+                                    alert("Whops. Something went wrong. This commonly happens when you enter a username that doesn't exist. Check the console for more information");
+                                    console.log("Login failed with error:", error.code);
+                                }
+                                );
+                        }
+                    
         }
     };
 </script>

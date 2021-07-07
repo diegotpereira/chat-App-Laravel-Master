@@ -49,63 +49,57 @@
   </div>
 </template>
 
+
 <script>
-    import { CometChat } from "@cometchat-pro/chat";
-
-        export default {
-            data() {
-                return {
-                    username: "",
-                    password: '',
-                    password_confirmation: '',
-                    showSpinner: false,
-
-                };
-            },
-
-            methods: {
-                registerAppUser() {
-                    if (this.username && this.password && this.password_confirmation) {
-                        this.showSpinner = true;
-
-                        if (this.password && this.password_confirmation) {
-
-                            let data = {
-                                username: this.username,
-                                password: this.password,
-                                password_confirmation: this.password_confirmation
-                            };
-
-                            axios.post(`http://127.0.0.1:8000/register`, data).then(response => {
-                                console.log(response).this.createUserOnCometChat(this.username);
-
+import { CometChat } from "@cometchat-pro/chat";
+    export default {
+        data() {
+            return {
+                username: "",
+                password: '',
+                password_confirmation: '',
+                showSpinner: false,
+            };
+        },
+        methods: {
+            registerAppUser() {
+                if (this.username && this.password && this.password_confirmation) {
+                    this.showSpinner = true;
+                    if (this.password && this.password_confirmation) {
+                        let data = {
+                            username: this.username,
+                            password: this.password,
+                            password_confirmation: this.password_confirmation
+                        };
+                        axios.post(`http://127.0.0.1:8000/register`, data)
+                            .then(response => {
+                                    console.log(response)
+                                this.createUserOnCometChat(this.username);
+                                
                                 this.showSpinner = false;
                             }).catch(error => {
-                                console.log(error.response.data.message);
-                                this.showSpinner = false;
-                            })
-                        }
+                            console.log(error.response.data.message);
+                            this.showSpinner = false;
+                        })
                     }
-                },
-
-                redirect() {
-                    window.location.href = '/login';
-                },
-
-                async createUserOnCometChat() {
-                    const AUTH_KEY = "AUTH_KEY";
-                    const UID = this.username
-
-                    var user= new CometChat.User(UID);
-
-                    user.setName(this.username)
+                }
+            },
+            redirect() {
+                   window.location.href = '/login';
+            },
+            async createUserOnCometChat() {
+                const AUTH_KEY = "3ed7b100332e48b633c492de743e3a8802f77934";
+                const UID = this.username
+                
+                var user = new CometChat.User(UID);
+                user.setName(this.username)
                     CometChat.createUser(user, AUTH_KEY).then(
                         user => {
-                            console.log("usuario criado", user);
+                            console.log("user created", user);
                             this.redirect()
                         })
-                }
             }
-
-        };
+        }
+        
+    };
 </script>
